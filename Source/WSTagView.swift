@@ -63,6 +63,13 @@ open class WSTagView: UIView {
             updateContent(animated: true)
         }
     }
+    
+    open var fullRoundCorner: Bool = false {
+        didSet {
+            self.layer.cornerRadius = textLabel.intrinsicContentSize.height / 2.0
+            updateContent(animated: false)
+        }
+    }
 
     public init(tag: WSTag) {
         super.init(frame: CGRect.zero)

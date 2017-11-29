@@ -83,6 +83,12 @@ open class WSTagsField: UIScrollView {
     open var spaceBetweenTags: CGFloat = 2.0 {
         didSet { repositionViews() }
     }
+    
+    open var fullRoundCorner: Bool = false {
+        didSet {
+            tagViews.forEach { $0.fullRoundCorner = self.fullRoundCorner }
+        }
+    }
 
     open fileprivate(set) var tags = [WSTag]()
     internal var tagViews = [WSTagView]()
@@ -198,6 +204,7 @@ open class WSTagsField: UIScrollView {
         tagView.selectedColor = self.selectedColor
         tagView.selectedTextColor = self.selectedTextColor
         tagView.displayDelimiter = self.displayDelimiter ? self.delimiter : ""
+        tagView.fullRoundCorner = self.fullRoundCorner
 
         tagView.onDidRequestSelection = { [weak self] tagView in
             self?.selectTagView(tagView, animated: true)
