@@ -235,13 +235,14 @@ open class WSTagsField: UIScrollView {
         addSubview(tagView)
 
         self.textField.text = ""
-        onDidAddTag?(self, tag)
 
         // Clearing text programmatically doesn't call this automatically
         onTextFieldDidChange(self.textField)
 
         updatePlaceholderTextVisibility()
         repositionViews()
+        
+        onDidAddTag?(self, tag)
     }
 
     open func removeTag(_ tag: String) {
@@ -263,10 +264,11 @@ open class WSTagsField: UIScrollView {
 
         let removedTag = self.tags[index]
         self.tags.remove(at: index)
-        onDidRemoveTag?(self, removedTag)
 
         updatePlaceholderTextVisibility()
         repositionViews()
+        
+        onDidRemoveTag?(self, removedTag)
     }
 
     open func removeTags() {
