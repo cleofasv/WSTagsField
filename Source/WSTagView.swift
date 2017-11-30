@@ -67,7 +67,7 @@ open class WSTagView: UIView {
     open var fullRoundCorner: Bool = false {
         didSet {
             if fullRoundCorner {
-                self.layer.cornerRadius = textLabel.intrinsicContentSize.height / 2.0
+                self.layer.cornerRadius = self.intrinsicContentSize.height / 2.0
             }
             else {
                 self.layer.cornerRadius = 3.0
